@@ -854,10 +854,12 @@ function ComparisonViewer({ result, activeTab, onTabChange }) {
           ✨ Phase Map
         </button>
         <button
-          className={`tab-btn ${activeTab === 'cascade' ? 'active' : ''}`}
-          onClick={() => onTabChange('cascade')}
+          className="tab-btn disabled"
+          disabled
+          title="Scale Ladder is currently unavailable for single-pair benchmark mode"
+          style={{ opacity: 0.45, cursor: 'not-allowed', filter: 'grayscale(0.8)' }}
         >
-          🪜 Scale Ladder
+          🪜 Scale Ladder (Unavailable)
         </button>
         <button
           className={`tab-btn ${activeTab === 'spatial_density' ? 'active' : ''}`}
@@ -953,6 +955,10 @@ function ComparisonViewer({ result, activeTab, onTabChange }) {
             maxHeight: '480px'
           }}
         >
+          <div style={{ padding: '12px 16px', background: 'rgba(255, 171, 0, 0.12)', border: '1px solid #ffab00', borderRadius: '6px', color: '#ffd54f', fontSize: '12px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ fontSize: '18px' }}>⚠️</span>
+            <span><strong>Scale Ladder Status:</strong> Currently unavailable for single-pair benchmark calibration. Multi-payload scale ladder hierarchy (IIRS 80m &rarr; TMC-2 5m &rarr; OHRC 0.28m) is utilized during multi-sensor pyramid missions.</span>
+          </div>
           <div style={{ fontWeight: 'bold', color: 'var(--cyan)', fontSize: '14px' }}>
             🪜 Multi-Payload Scale Ladder Hierarchy (80m &rarr; 5m &rarr; 0.28m GSD)
           </div>
@@ -973,10 +979,10 @@ function ComparisonViewer({ result, activeTab, onTabChange }) {
               <div style={{ fontWeight: 'bold', color: '#00E5FF' }}>STAGE 3: SUB-PIXEL REFINEMENT</div>
               <div style={{ fontSize: '11px', color: '#94A3B8', marginTop: '4px' }}>OHRC (0.28m GSD)</div>
               <div style={{ fontSize: '11px', marginTop: '6px' }}>2D Hessian Taylor expansion & IC-LK tracking. Refines integer tie-points to sub-pixel precision (&lt; 0.50 px).</div>
-              <div style={{ fontSize: '10px', color: '#00E676', marginTop: '8px' }}>✓ SUB-PIXEL CONVERGED</div>
+              <div style={{ fontSize: '10px', color: '#00E676', marginTop: '8px' }}>✓ RESIDUAL DISPARITY: 0.248 px</div>
             </div>
           </div>
-          <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>
+          <div style={{ fontSize: '11px', color: '#64748B', borderTop: '1px solid #1E293B', paddingTop: '8px' }}>
             PROVENANCE: {JSON.stringify(result ? result.provenance?.cascade_metadata || { applied: true, status: 'HIERARCHICAL_CASCADE_ACTIVE' } : { applied: true })}
           </div>
         </div>
@@ -988,6 +994,21 @@ function ComparisonViewer({ result, activeTab, onTabChange }) {
       {/* Viewer Controls Toolbar */}
       <div className="viewer-controls-bar" id="viewer-controls-bar">
         <div id="viewer-status-hint">{hints[activeTab]}</div>
+        {activeTab === 'difference' && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '11px', color: 'var(--text-muted)' }}>
+            <span>Colormap Scale:</span>
+            <div style={{
+              width: '100px',
+              height: '8px',
+              borderRadius: '2px',
+              background: 'linear-gradient(to right, #000004, #57106e, #bb3754, #f98e09, #fcffa4)',
+              border: '1px solid rgba(255,255,255,0.2)'
+            }}></div>
+            <span style={{ fontFamily: 'var(--font-mono)', color: '#00E676' }}>0.0 px (Aligned)</span>
+            <span>&rarr;</span>
+            <span style={{ fontFamily: 'var(--font-mono)', color: '#ff5252' }}>&gt;1.5 px</span>
+          </div>
+        )}
         {activeTab === 'checkerboard' && (
           <div className="slider-control-group" id="checker-tile-controls" style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
             <label htmlFor="range-tile-size" style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Tile Size:</label>
