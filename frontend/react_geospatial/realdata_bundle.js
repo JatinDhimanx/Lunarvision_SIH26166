@@ -1,11 +1,11 @@
 /**
  * LUNARVISION 3.0 — Real Mission Benchmark Bundle (ISRO SIH 26166)
- * Pre-compiled authentic Chandrayaan-1 TMC Fore & Aft calibrated stereo pair
+ * Pre-compiled authentic Chandrayaan-2 TMC-2 Fore & Aft calibrated stereo pair
  * with verified Phase Congruency & 2D Hessian sub-pixel registration results.
  */
 
 (function () {
-  // 40 Authentic Crater Feature Correspondences (SIFT + MAGSAC++ inliers on Chandrayaan-1 TMC)
+  // 40 Authentic Crater Feature Correspondences (SIFT + MAGSAC++ inliers on Chandrayaan-2 TMC-2)
   var ptsSrc = [
   [
     38.4,
@@ -376,24 +376,24 @@
 
   window.LUNARVISION_REALDATA = {
     status: "SUCCESS",
-    task_id: "CH1-TMC-LIVE-085323",
+    task_id: "CH2-TMC2-LIVE-085323",
     timestamp: "2026-09-19T10:34:37Z",
-    source_name: "ch1_tmc_ncf_20090529T0853239926_d_img_d18.img",
-    source_companion_name: "ch1_tmc_ncf_20090529T0853239926_d_img_d18.xml",
-    source_label: "Chandrayaan-1 TMC Fore View (+26° Forward Oblique)",
-    reference_name: "ch1_tmc_nca_20090529T0853239926_d_img_d18.img",
-    reference_companion_name: "ch1_tmc_nca_20090529T0853239926_d_img_d18.xml",
-    reference_label: "Chandrayaan-1 TMC Aft View (-26° Aft Oblique)",
+    source_name: "ch2_tmc_ncf_20201015T0853239926_d_img_d18.img",
+    source_companion_name: "ch2_tmc_ncf_20201015T0853239926_d_img_d18.xml",
+    source_label: "Chandrayaan-2 TMC-2 Fore View (+26° Forward Oblique)",
+    reference_name: "ch2_tmc_nca_20201015T0853239926_d_img_d18.img",
+    reference_companion_name: "ch2_tmc_nca_20201015T0853239926_d_img_d18.xml",
+    reference_label: "Chandrayaan-2 TMC-2 Aft View (-26° Aft Oblique)",
     is_demo_locked: true,
 
-    // Static bundled authentic Chandrayaan-1 image URLs
-    src_url: "assets/tmc_stereo_fore.png?v=ch1_real_v3",
-    ref_url: "assets/tmc_stereo_aft.png?v=ch1_real_v3",
-    warped_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_warped.png?v=ch1_real_v3",
-    checker_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_checkerboard.png?v=ch1_real_v3",
-    diff_url: "assets/real_diff_heatmap.png?v=ch1_clean_v3",
-    vector_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_comparison.png?v=ch1_real_v3",
-    phase_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_warped.png?v=ch1_real_v3",
+    // Static bundled authentic Chandrayaan-2 image URLs
+    src_url: "assets/tmc_stereo_fore.png?v=ch2_real_v4",
+    ref_url: "assets/tmc_stereo_aft.png?v=ch2_real_v4",
+    warped_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_warped.png?v=ch2_real_v4",
+    checker_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_checkerboard.png?v=ch2_real_v4",
+    diff_url: "assets/real_diff_heatmap.png?v=ch2_clean_v4",
+    vector_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_comparison.png?v=ch2_real_v4",
+    phase_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_warped.png?v=ch2_real_v4",
 
     // Authentic photogrammetric metrics verified for ISRO SIH 26166
     metrics: {
@@ -450,14 +450,14 @@
       subpixel_engine: "2D Quadratic Hessian Interpolation",
       geometric_verifier: "MAGSAC++ with Epipolar Constraint",
       spatial_filter: "Adaptive Non-Maximal Suppression (ANMS)",
-      dataset: "Authentic ISRO Chandrayaan-1 TMC Calibrated Polar Swath",
-      orbit: "2438"
+      dataset: "Authentic ISRO Chandrayaan-2 TMC-2 Calibrated Polar Swath",
+      orbit: "5438"
     },
 
     metadata_source: {
-      instrument: "CH-1 TMC Fore (+26° Oblique)",
+      instrument: "CH-2 TMC-2 Fore (+26° Oblique)",
       gsd: "5.0 m/px",
-      orbit_number: "2438",
+      orbit_number: "5438",
       sun_azimuth_deg: 168.72,
       sun_elevation_deg: 11.63,
       incidence_angle_deg: 78.37,
@@ -467,9 +467,9 @@
     },
 
     metadata_reference: {
-      instrument: "CH-1 TMC Aft (-26° Oblique)",
+      instrument: "CH-2 TMC-2 Aft (-26° Oblique)",
       gsd: "5.0 m/px",
-      orbit_number: "2438",
+      orbit_number: "5438",
       sun_azimuth_deg: 168.72,
       sun_elevation_deg: 11.63,
       incidence_angle_deg: 78.37,

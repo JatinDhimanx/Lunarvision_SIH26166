@@ -105,7 +105,7 @@ def _execute_processing_pipeline(job_id: str):
 @router.get("/local-datasets")
 async def list_local_datasets():
     """
-    Detects any pre-extracted Chandrayaan-1 or Chandrayaan-2 TMC datasets located on disk.
+    Detects any pre-extracted Chandrayaan-2 TMC-2 datasets located on disk.
     Allows 1-click instant ingestion without uploading 1.56 GB through the browser.
     """
     datasets = []

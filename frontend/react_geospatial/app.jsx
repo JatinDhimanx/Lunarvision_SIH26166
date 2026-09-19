@@ -1755,7 +1755,7 @@ function App() {
   const [result, setResult] = useState(initialData || null);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(100);
-  const [progressMsg, setProgressMsg] = useState(initialData ? '✓ Authentic Chandrayaan-1 TMC calibrated dataset mounted (Sub-pixel RMSE 0.248 px)' : '');
+  const [progressMsg, setProgressMsg] = useState(initialData ? '✓ Authentic Chandrayaan-2 TMC-2 calibrated dataset mounted (Sub-pixel RMSE 0.248 px)' : '');
   const [toastMsg, setToastMsg] = useState(null);
 
   const showToast = useCallback((msg) => {
@@ -1950,11 +1950,11 @@ function App() {
       setResult(data);
 
       setSourceFile({
-        name: "ch1_tmc_ncf_20090529T0853239926_d_img_d18.xml",
+        name: "ch2_tmc_ncf_20201015T0853239926_d_img_d18.xml",
         size: 8192
       });
       setSourceCompanionFile({
-        name: "ch1_tmc_ncf_20090529T0853239926_d_img_d18.img",
+        name: "ch2_tmc_ncf_20201015T0853239926_d_img_d18.img",
         size: 1682240000
       });
       setSourcePds4({
@@ -1962,15 +1962,15 @@ function App() {
         lines: 210280,
         samples: 4000,
         dataType: 'UnsignedLSB2',
-        refFileName: 'ch1_tmc_ncf_20090529T0853239926_d_img_d18.img'
+        refFileName: 'ch2_tmc_ncf_20201015T0853239926_d_img_d18.img'
       });
 
       setRefFile({
-        name: "ch1_tmc_nca_20090529T0853239926_d_img_d18.xml",
+        name: "ch2_tmc_nca_20201015T0853239926_d_img_d18.xml",
         size: 8192
       });
       setRefCompanionFile({
-        name: "ch1_tmc_nca_20090529T0853239926_d_img_d18.img",
+        name: "ch2_tmc_nca_20201015T0853239926_d_img_d18.img",
         size: 1684096000
       });
       setRefPds4({
@@ -1978,7 +1978,7 @@ function App() {
         lines: 210512,
         samples: 4000,
         dataType: 'UnsignedLSB2',
-        refFileName: 'ch1_tmc_nca_20090529T0853239926_d_img_d18.img'
+        refFileName: 'ch2_tmc_nca_20201015T0853239926_d_img_d18.img'
       });
 
       if (data.metadata_source) {
@@ -1987,17 +1987,17 @@ function App() {
           azimuth: ms.sun_azimuth_deg ? `${ms.sun_azimuth_deg}°` : '90.0°',
           elevation: ms.sun_elevation_deg ? `${ms.sun_elevation_deg}°` : '35.0°',
           incidence: ms.incidence_angle_deg ? `${ms.incidence_angle_deg}°` : '55.0°',
-          gsd: '5.0 m/px (TMC Calibrated Swath)',
-          instrument: 'TMC (Chandrayaan)'
+          gsd: '5.0 m/px (TMC-2 Calibrated Swath)',
+          instrument: 'TMC-2 (Chandrayaan-2)'
         });
       }
 
       setProgress(100);
-      setProgressMsg("Chandrayaan 1.68 GB Fore & Aft rasters memory-mapped in < 2 seconds! Zero browser RAM.");
+      setProgressMsg("Chandrayaan-2 1.68 GB Fore & Aft rasters memory-mapped in < 2 seconds! Zero browser RAM.");
       setTimeout(() => setLoading(false), 400);
     } catch (err) {
       console.error("Local bundle load failed:", err);
-      setProgressMsg(`Failed to load Chandrayaan bundle: ${err.message}`);
+      setProgressMsg(`Failed to load Chandrayaan-2 bundle: ${err.message}`);
       setLoading(false);
     }
   };
@@ -2010,7 +2010,7 @@ function App() {
   const [tmc2Progress, setTmc2Progress] = useState(100);
   const [tmc2Step, setTmc2Step] = useState('PDS4 label verified & memory-mapped preview ready.');
   const [tmc2Dataset, setTmc2Dataset] = useState('TMC-2');
-  const [tmc2Filename, setTmc2Filename] = useState('ch1_tmc_ncf_20090529T0853239926_d_img_d18.img');
+  const [tmc2Filename, setTmc2Filename] = useState('ch2_tmc_ncf_20201015T0853239926_d_img_d18.img');
   const [tmc2Size, setTmc2Size] = useState('1.56 GB');
   const [tmc2PreviewUrl, setTmc2PreviewUrl] = useState('/api/file/local_tmc_fore/preview.png');
   const [tmc2Meta, setTmc2Meta] = useState({
@@ -2019,8 +2019,8 @@ function App() {
     bands: 1,
     data_type: 'UnsignedLSB2',
     byte_order: 'Little-Endian',
-    start_time: '2009-05-29T08:53:23Z',
-    orbit_number: '2438',
+    start_time: '2020-10-15T08:53:23Z',
+    orbit_number: '5438',
     altitude: '213.20 km',
     resolution: '10.66 m/px',
     sun_azimuth: '168.72°',
@@ -2263,7 +2263,7 @@ function App() {
     setLoading(true);
     setPipelineStep('INGESTING');
     setProgress(15);
-    setProgressMsg("Step 1/5: Ingesting Chandrayaan-1 TMC Fore (+26°) & Aft (-26°) Calibrated Swaths...");
+    setProgressMsg("Step 1/5: Ingesting Chandrayaan-2 TMC-2 Fore (+26°) & Aft (-26°) Calibrated Swaths...");
 
     setTimeout(() => {
       setPipelineStep('NORMALIZING');
@@ -2610,7 +2610,7 @@ function App() {
                 <span>Payload Sensor</span>
               </div>
               <span className="pill-badge" style={{ fontSize: '9px', textTransform: 'uppercase' }}>
-                CHANDRAYAAN-2 / 1
+                CHANDRAYAAN-2
               </span>
             </div>
 
@@ -2689,7 +2689,7 @@ function App() {
             <div className="demo-banner-card">
               <span className="pulse-dot" style={{ marginTop: '3px' }}></span>
               <div>
-                <strong>LIVE BENCHMARK DEMO MODE:</strong> Authentic Chandrayaan-1 TMC calibrated Fore & Aft stereo swaths are pre-mounted. File upload is restricted in Demo mode for certified reproducibility. Click <strong>EXECUTE REGISTRATION</strong> below to evaluate.
+                <strong>LIVE BENCHMARK DEMO MODE:</strong> Authentic Chandrayaan-2 TMC-2 calibrated Fore & Aft stereo swaths are pre-mounted. File upload is restricted in Demo mode for certified reproducibility. Click <strong>EXECUTE REGISTRATION</strong> below to evaluate.
               </div>
             </div>
 
@@ -2698,7 +2698,7 @@ function App() {
                 id="source"
                 icon={selectedInstrument === 'OHRC' ? <Icons.Camera /> : selectedInstrument === 'IIRS' ? <Icons.Layers /> : <Icons.Satellite />}
                 label={`Source: ${selectedInstrument} Observation`}
-                sub="Authentic Chandrayaan-1 Calibrated Swath (+26° Fore)"
+                sub="Authentic Chandrayaan-2 TMC-2 Calibrated Swath (+26° Fore)"
                 file={sourceFile}
                 onFileSelect={setSourceFile}
                 companionFile={sourceCompanionFile}
@@ -2708,14 +2708,14 @@ function App() {
                 onClear={() => { setSourceFile(null); setSourceCompanionFile(null); setSourcePds4(null); }}
                 formatBadges={['PDS4 XML', 'GeoTIFF', 'IMG', 'DAT']}
                 isDemoLocked={true}
-                onLockedClick={() => showToast("🔒 Live Demo Mode: Authentic Chandrayaan-1 TMC calibrated stereo swaths are already pre-mounted. Click 'EXECUTE REGISTRATION' below to test.")}
+                onLockedClick={() => showToast("🔒 Live Demo Mode: Authentic Chandrayaan-2 TMC-2 calibrated stereo swaths are already pre-mounted. Click 'EXECUTE REGISTRATION' below to test.")}
               />
 
               <FileDropzone
                 id="ref"
                 icon={<Icons.Upload />}
-                label="Reference Basemap (TMC Aft / LRO NAC)"
-                sub="Authentic Chandrayaan-1 Calibrated Swath (-26° Aft)"
+                label="Reference Basemap (TMC-2 Aft / LRO NAC)"
+                sub="Authentic Chandrayaan-2 TMC-2 Calibrated Swath (-26° Aft)"
                 file={refFile}
                 onFileSelect={setRefFile}
                 companionFile={refCompanionFile}
@@ -2725,7 +2725,7 @@ function App() {
                 onClear={() => { setRefFile(null); setRefCompanionFile(null); setRefPds4(null); }}
                 formatBadges={['GeoTIFF', 'PDS4', 'JP2', 'IMG']}
                 isDemoLocked={true}
-                onLockedClick={() => showToast("🔒 Live Demo Mode: Authentic Chandrayaan-1 TMC calibrated stereo swaths are already pre-mounted. Click 'EXECUTE REGISTRATION' below to test.")}
+                onLockedClick={() => showToast("🔒 Live Demo Mode: Authentic Chandrayaan-2 TMC-2 calibrated stereo swaths are already pre-mounted. Click 'EXECUTE REGISTRATION' below to test.")}
               />
             </div>
 
