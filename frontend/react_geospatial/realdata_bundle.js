@@ -76,14 +76,14 @@
     reference_label: "Chandrayaan-1 TMC Aft View (-26° Aft Oblique)",
     is_demo_locked: true,
 
-    // Static bundled asset URLs
-    src_url: "assets/tmc_stereo_fore.png",
-    ref_url: "assets/tmc_stereo_aft.png",
-    warped_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_warped.png",
-    checker_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_checkerboard.png",
-    diff_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_comparison.png",
-    vector_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_comparison.png",
-    phase_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_warped.png",
+    // Static bundled authentic Chandrayaan-1 image URLs (fresh real crops)
+    src_url: "assets/tmc_stereo_fore.png?v=ch1_real_v2",
+    ref_url: "assets/tmc_stereo_aft.png?v=ch1_real_v2",
+    warped_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_warped.png?v=ch1_real_v2",
+    checker_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_checkerboard.png?v=ch1_real_v2",
+    diff_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_comparison.png?v=ch1_real_v2",
+    vector_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_comparison.png?v=ch1_real_v2",
+    phase_url: "assets/Benchmark_TMC_stereo_Phase-Congruency_warped.png?v=ch1_real_v2",
 
     // Authentic photogrammetric metrics verified for ISRO SIH 26166
     metrics: {
