@@ -20,9 +20,8 @@ COPY backend/ ./backend/
 COPY core/ ./core/
 COPY utils/ ./utils/
 COPY frontend/ ./frontend/
+COPY scripts/ ./scripts/
 COPY server.py .
-COPY run_server.py .
-COPY run_registration.py .
 COPY streamlit_app.py .
 
 # Environment variables

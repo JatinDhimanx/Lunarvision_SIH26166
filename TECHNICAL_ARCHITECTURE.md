@@ -63,5 +63,5 @@ directory in deployment.
 
 ### Running the Command Line Interface (CLI)
 ```bash
-python run_registration.py --src <source-mission-file> --ref <reference-mission-file> --out <output-directory>
+python scripts/run_registration.py --src <source-mission-file> --ref <reference-mission-file> --out <output-directory>
 ```
