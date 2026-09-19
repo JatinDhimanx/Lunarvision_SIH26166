@@ -47,11 +47,14 @@
 </head>
 <body>
 
+  <!-- Pre-Loaded Authentic ISRO Chandrayaan Real Data Bundle -->
+  <script src="realdata_bundle.js"></script>
+
   <!-- React 18 Application Root Mount -->
   <div id="root"></div>
 
-  <!-- Pure React Component Suite: Fast Direct Precompiled JavaScript Execution with Babel fallback -->
-  <script src="app.compiled.js?v=chandrayaan_pro_v8" onerror="console.warn('Precompiled JS missing, compiling live with Babel...'); document.write('<script type=\'text/babel\' src=\'app.jsx\'><\/script>');"></script>
+  <!-- Pure React Component Suite: Live JSX Execution with Babel -->
+  <script type="text/babel" src="app.jsx?v=lunarvision_realdata_v1"></script>
 
 </body>
 </html>

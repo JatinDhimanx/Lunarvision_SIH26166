@@ -2304,5 +2304,78 @@ canvas.interactive-canvas {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ============================================================================
+   DEMO BENCHMARK PRE-MOUNTED STYLING
+============================================================================ */
+.demo-banner-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(0, 229, 255, 0.06);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--text-body, #CBD5E1);
+}
+
+.demo-banner-card strong {
+  color: var(--cyan, #00E5FF);
+}
+
+.demo-lock-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 230, 118, 0.12);
+  border: 1px solid rgba(0, 230, 118, 0.4);
+  color: #00E676;
+  font-family: var(--font-mono, monospace);
+  font-size: 9.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.dropzone-box.demo-locked {
+  cursor: default;
+  border-style: solid;
+  border-color: rgba(0, 229, 255, 0.3);
+  background: rgba(10, 16, 28, 0.75);
+}
+
+.dropzone-box.demo-locked:hover {
+  border-color: rgba(0, 229, 255, 0.5);
+}
+
+.demo-toast-popup {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(0, 229, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 229, 255, 0.2);
+  backdrop-filter: blur(12px);
+  color: #F8FAFC;
+  padding: 12px 20px;
+  border-radius: 8px;
+  z-index: 99999;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: toast-slide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes toast-slide {
+  from { opacity: 0; transform: translate(-50%, 15px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
 
 
