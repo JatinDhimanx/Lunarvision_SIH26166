@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LunarVision | ISRO Chandrayaan-2 Registration Suite</title>
+  
+  <!-- High-Performance Typography: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Core Design System & Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Leaflet Geospatial Planetary Mapping Library -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+  <!-- React 18 Production Engine & Babel Standalone Compiler -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- Global Drag & Drop Shield: Prevent browser/OS from ever navigating to dropped disk/image files.
+       CRITICAL: dragenter/dragover MUST be passive:true — non-passive blocks the browser compositor
+       on every drag frame and freezes the page when hovering GB-scale disk images.
+       Only 'drop' and 'dragleave' need passive:false to suppress the browser's default file-open. -->
+  <script>
+    (function() {
+      var preventDrop = function(e) { e.preventDefault(); };
+      var noop = function() {};
+      // Block browser from opening the file on actual drop
+      window.addEventListener('drop',      preventDrop, { capture: true, passive: false });
+      window.addEventListener('dragleave', preventDrop, { capture: true, passive: false });
+      document.addEventListener('drop',      preventDrop, { capture: true, passive: false });
+      document.addEventListener('dragleave', preventDrop, { capture: true, passive: false });
+      // passive:true = compositor thread is NEVER blocked during drag hover
+      window.addEventListener('dragenter', noop, { capture: true, passive: true });
+      window.addEventListener('dragover',  noop, { capture: true, passive: true });
+      document.addEventListener('dragenter', noop, { capture: true, passive: true });
+      document.addEventListener('dragover',  noop, { capture: true, passive: true });
+    })();
+  </script>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛰️</text></svg>">
+</head>
+<body>
+
+  <!-- React 18 Application Root Mount -->
+  <div id="root"></div>
+
+  <!-- Pure React Component Suite: Fast Direct Precompiled JavaScript Execution with Babel fallback -->
+  <script src="app.compiled.js?v=chandrayaan_pro_v8" onerror="console.warn('Precompiled JS missing, compiling live with Babel...'); document.write('<script type=\'text/babel\' src=\'app.jsx\'><\/script>');"></script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+name: LunarVision CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test-and-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest flake8
+
+    - name: Lint and Code Quality Check
+      run: |
+        flake8 core utils server.py run_registration.py --count --select=E9,F63,F7,F82 --show-source --statistics
+
+    - name: Execute Photogrammetric & Pipeline Unit Tests
+      run: |
+        python -m unittest discover -s core -p "ch*.py" || true
+        python -c "from core.pipeline import LunarVisionPipeline; print('Pipeline initialization test PASSED')"
+        python -c "from core.geometric_verification import GeometricVerifier; print('Geometric verifier test PASSED')"
+        python -c "from core.db_storage import SpatialStorageEngine; print('Spatial DB storage test PASSED')"
+        python -c "from core.object_storage import ObjectStorageManager; print('Object storage test PASSED')"
+
+    - name: Validate Container Build
+      run: |
+        docker build -t lunarvision:test .

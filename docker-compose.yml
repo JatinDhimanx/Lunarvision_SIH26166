@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # 1. LunarVision Core Production API & React Geospatial UI
+  lunarvision-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lunarvision_core_api
+    ports:
+      - "8000:8000"
+      - "8501:8501"
+    environment:
+      - LUNARVISION_OUTPUT_DIR=/data/lunarvision_deliverables
+      - MINIO_ENDPOINT=lunarvision-minio:9000
+      - MINIO_ACCESS_KEY=${MINIO_ACCESS_KEY:-minioadmin}
+      - MINIO_SECRET_KEY=${MINIO_SECRET_KEY:-minioadmin}
+      - POSTGRES_HOST=lunarvision-postgis
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=${POSTGRES_DB:-lunarvision}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+    volumes:
+      - deliverables_data:/data/lunarvision_deliverables
+    depends_on:
+      - lunarvision-postgis
+      - lunarvision-minio
+    restart: unless-stopped
+
+  # 2. PostgreSQL + PostGIS (Spatial queries on lunar match points & tie-points)
+  lunarvision-postgis:
+    image: postgis/postgis:16-3.4
+    container_name: lunarvision_spatial_postgis
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-lunarvision}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # 3. MinIO S3-Compatible Object Storage (Large raster tiles & image chips)
+  lunarvision-minio:
+    image: minio/minio:RELEASE.2023-09-30T07-02-29Z
+    container_name: lunarvision_s3_minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ACCESS_KEY:-minioadmin}
+      - MINIO_ROOT_PASSWORD=${MINIO_SECRET_KEY:-minioadmin}
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    restart: unless-stopped
+
+volumes:
+  deliverables_data:
+  postgis_data:
+  minio_data:

@@ -1,0 +1,59 @@
+# ── Python ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ── Virtual environments ─────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── Pipeline outputs (can be large) ─────────────────────
+results/*
+!results/.gitkeep
+
+# ── User extracted bundle cache ──────────────────────────
+data/extracted_bundles/*
+!data/extracted_bundles/.gitkeep
+
+# ── Runtime / DB ─────────────────────────────────────────
+lunarvision_spatial.db
+*.db
+*.sqlite
+
+# ── Secrets / env ────────────────────────────────────────
+.env
+*.env
+
+# ── OS junk ─────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ──────────────────────────────────────────────────
+.idea/
+.vscode/
+*.code-workspace
+
+# ── Large binary / data files ────────────────────────────
+*.img
+*.tif
+*.tiff
+*.npy
+*.npz
+
+# Allow benchmark test files
+!data/sample_benchmarks/*.img
+
+# ── Compiled frontend ─────────────────────────────────────
+frontend/react_geospatial/app.compiled.js
